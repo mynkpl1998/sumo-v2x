@@ -24,8 +24,8 @@ class V2I(gym.Env):
     metadata = {"render_modes": ["human"]}
     
     def __init__(self,
-                 view_size: int,
-                 max_nearby_vehicles:int,
+                 view_size: int=20,
+                 max_nearby_vehicles:int=6,
                  render_mode=None):
         
 
@@ -41,7 +41,9 @@ class V2I(gym.Env):
         self._logger = logging.getLogger(__name__)
         self._logger.setLevel(logging.DEBUG)
         logging.basicConfig(filename='output.log', level=logging.INFO)
-    
+        
+        self._logger.info("Config: View Size: {}. Max nearby vehicles to consider: {}.".format(view_size,
+                                                                                               max_nearby_vehicles))
         # Try to fetch the module path to build the sumo path
         basePath = pathlib.Path(__file__)
         binsPath = os.path.abspath(os.path.join(basePath.parent, "bins"))
