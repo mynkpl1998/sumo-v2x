@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<routes>
+  <!-- Routes -->
+  <route id="r_0" edges="E0 E1 E2 E9 E11 E12"/>
+  <route id="r_1" edges="E0 E1 E2 E9 E10 E8"/>
+  <!-- Vehicles, persons and containers (sorted by depart) -->
+  <vType id="ego_vType" length="5" maxSpeed="50" maxAccel="2" maxDecel="-2" minGap="1" color="red"/>
+  <vType id="non_ego_vType" length="5" maxSpeed="50" maxAccel="2" maxDecel="-2" minGap="1" color="yellow"/>
+  <vehicle id="car_0" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_1" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_2" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_3" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_4" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_5" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_6" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_7" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_8" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_9" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_10" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_11" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_12" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_13" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_14" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_15" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_16" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_17" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_18" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_19" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_20" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_21" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_22" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_23" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_24" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="ego" depart="0.0" type="ego_vType" route="r_0"/>
+  <vehicle id="car_26" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_27" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_28" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_29" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_30" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_31" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_32" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_33" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_34" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_35" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_36" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_37" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_38" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_39" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_40" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_41" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_42" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_43" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_44" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_45" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_46" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_47" depart="0.0" type="non_ego_vType" route="r_0"/>
+  <vehicle id="car_48" depart="0.0" type="non_ego_vType" route="r_1"/>
+  <vehicle id="car_49" depart="0.0" type="non_ego_vType" route="r_0"/>
+</routes>
