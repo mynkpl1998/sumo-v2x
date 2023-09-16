@@ -193,7 +193,8 @@ class V2I(gym.Env):
         else:
             # Terminal State
             reward = 0
-            return (-1, -1, -1), reward, done, truncated, {}
+            terminal_state = np.array([-1, -1, -1] * self._max_nearby_vehicles).flatten()
+            return terminal_state, reward, done, truncated, {}
 
 
     def _get_binary_abs_path(self, 
