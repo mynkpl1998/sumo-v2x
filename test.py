@@ -4,9 +4,11 @@ import logging
 
 if __name__ == "__main__":
     #env = V2I(render_mode="human", view_size=20)
-    env = gym.make('sumo/v2i-v0', view_size=20)
+    maxNearbyVehicles = 6
+    env = gym.make('sumo/v2i-v0', view_size=20, max_nearby_vehicles=maxNearbyVehicles)
     episodes = 10
-
+    #print(env.observation_space)
+    
     for epsiode in range(0, episodes):
 
         sum_reward = 0

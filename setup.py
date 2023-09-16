@@ -7,6 +7,4 @@ setup(name='sumo-v2x',
       author_email='https://mynkpl1998.github.io/',
       url='https://www.python.org/sigs/distutils-sig/',
       include_package_data=True,
-      package_data={"": ["/xmls/*"]},
-      #packages=['sumo'],
-     )
+      package_data={"": ["/xmls/*"]})

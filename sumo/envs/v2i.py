@@ -25,6 +25,7 @@ class V2I(gym.Env):
     
     def __init__(self,
                  view_size: int,
+                 max_nearby_vehicles:int,
                  render_mode=None):
         
 
@@ -54,6 +55,9 @@ class V2I(gym.Env):
         # Max time steps in episode
         self._max_time_steps = 3e3
 
+        # Max number of vehicles to consider near EGO vehicle
+        self._max_nearby_vehicles = max_nearby_vehicles
+
         # Current time steps
         self._current_t_steps = 0
 
@@ -72,10 +76,10 @@ class V2I(gym.Env):
                                 dtype=np.float32)
         
         # Define observation space
-        obs_box = Box(low=np.array([-float('inf'), -float('inf'), 0.0]),
-                      high=np.array([float('inf'), float('inf'), self._vehicle_config['maxSpeed']]),
+        obs_box = Box(low=np.array([-float('inf')] * max_nearby_vehicles * 3),
+                      high=np.array([float('inf')] * max_nearby_vehicles * 3),
                       dtype=np.float32)
-        self.observation_space = Sequence(obs_box)
+        self.observation_space = obs_box
         """
         # Simulation binary arguments
         args = self._build_sim_args(sumoConfig=str(basePath.parent) + "/xmls/v2v.sumocfg",
@@ -179,11 +183,11 @@ class V2I(gym.Env):
 
             # Reward function
             reward = tc.vehicle.getSpeed("ego")
-            obs = self._get_obs(tc)
-            info = {"num_vehicles_nearby": len(obs)}
+            obs, nearby_vehicles = self._get_obs(tc)
+            info = {"num_vehicles_nearby": nearby_vehicles}
             
             # observation, reward, terminated, truncated, info     
-            return self._get_obs(tc), reward, done, truncated, info     
+            return obs, reward, done, truncated, info     
         else:
             # Terminal State
             reward = 0
@@ -205,10 +209,25 @@ class V2I(gym.Env):
     
     def _get_obs(self, tc):
         nearby_vehs = self._get_ego_nearby_vehicles(tc, self._view_size)
-        obs = []
+        ego_veh = nearby_vehs['ego']
+        dist_dict = {}
         for veh in nearby_vehs.values():
-            obs.append(np.array((veh.x, veh.y, veh.speed), dtype=np.float32))
-        return tuple(obs)
+            dist = distance.euclidean((ego_veh.x, ego_veh.y), (veh.x, veh.y))
+            dist_dict[veh.id] = dist
+        dist_dict = sorted(dist_dict.items(), key=lambda x:x[1])
+        
+        obs = []
+
+        for idx, (vid, dist) in enumerate(dist_dict):
+            v = nearby_vehs[vid]
+            obs.append( (v.x, v.y, v.speed))
+            if (idx + 1) >= self._max_nearby_vehicles:
+                break
+        remaining_obs = self._max_nearby_vehicles - len(obs)
+        if remaining_obs > 0:
+            obs = obs + [(-1, -1, -1)] * remaining_obs
+        obs = np.array(obs, dtype=np.float32).flatten()
+        return obs, len(nearby_vehs)
 
     def _get_ego_nearby_vehicles(self, tc, viewSize: int):
         veh_ids = list(tc.vehicle.getIDList())
@@ -377,6 +396,6 @@ class V2I(gym.Env):
         self._current_t_steps = 0
 
         # Returns the list of vehicles and count
-        obs = self._get_obs(tc)
-        return obs, {"num_vehicles_nearby": len(obs)}
+        obs, num_nearby_veh = self._get_obs(tc)
+        return obs, {"num_vehicles_nearby": num_nearby_veh}
 

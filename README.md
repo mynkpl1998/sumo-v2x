@@ -32,7 +32,7 @@ conda activate sumo
 
 Install the package by following the below steps
 ```
-git clone 
+git clone https://github.com/mynkpl1998/sumo-v2x.git
 cd sumo/
 python setup.py install
 pip install -e .
