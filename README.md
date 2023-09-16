@@ -1,4 +1,4 @@
-# SUMO-V2I/V2X
+# SUMO-V2X
 
 A gym environment to simulate Vehicle-to-Vehicle and Vehicle-to-Infrastructure interactions.
 
@@ -18,7 +18,7 @@ Install the package by following the below steps
 git clone 
 cd sumo/
 python setup.py install
-pip install -e
+pip install -e .
 ```
 
 Check your installation
