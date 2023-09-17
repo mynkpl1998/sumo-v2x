@@ -187,7 +187,6 @@ class V2I(gym.Env):
         if not done:
             # Reward function
             reward = tc.vehicle.getSpeed("ego")/tc.vehicle.getMaxSpeed("ego")
-            print(reward)
             obs, nearby_vehicles = self._get_obs(tc)
             info = {"num_vehicles_nearby": nearby_vehicles}
             
