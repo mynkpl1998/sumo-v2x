@@ -31,7 +31,7 @@
   <vehicle id="car_22" depart="0.0" type="non_ego_vType" route="r_0"/>
   <vehicle id="car_23" depart="0.0" type="non_ego_vType" route="r_1"/>
   <vehicle id="car_24" depart="0.0" type="non_ego_vType" route="r_0"/>
-  <vehicle id="ego" depart="0.0" type="ego_vType" route="r_0"/>
+  <vehicle id="ego" depart="0.0" type="ego_vType" route="r_1"/>
   <vehicle id="car_26" depart="0.0" type="non_ego_vType" route="r_1"/>
   <vehicle id="car_27" depart="0.0" type="non_ego_vType" route="r_0"/>
   <vehicle id="car_28" depart="0.0" type="non_ego_vType" route="r_1"/>

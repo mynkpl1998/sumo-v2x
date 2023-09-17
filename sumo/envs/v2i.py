@@ -261,6 +261,12 @@ class V2I(gym.Env):
             tc.close()
         sys.stdout.flush()
     
+    def render(self):
+        """render is called during training. 
+        Keep render empty for now.
+        """
+        pass
+    
     def close(self):
         """Closes the TraCI connection, if opened.
         """
