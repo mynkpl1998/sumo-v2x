@@ -5,14 +5,15 @@ import logging
 if __name__ == "__main__":
     #env = V2I(render_mode="human", view_size=20)
     maxNearbyVehicles = 6
-    env = gym.make('sumo/v2i-v0', render_mode="human" , view_size=20, max_nearby_vehicles=maxNearbyVehicles)
-    episodes = 10
+    env = gym.make('sumo/v2i-v0', render_mode=None , view_size=20, max_nearby_vehicles=maxNearbyVehicles)
+    episodes = 1
     #print(env.observation_space)
     
     for epsiode in range(0, episodes):
 
         sum_reward = 0
         obs, obs_len = env.reset()
+        env.action_space.seed(0)
         #print(obs)
         done = False
         steps = 0
@@ -23,13 +24,13 @@ if __name__ == "__main__":
             obs, reward, terminated, truncated, info = env.step(act[0])
             #print(obs)
             #print(reward)
-            sum_reward += 1
+            sum_reward += reward
             steps += 1
             if terminated or truncated:
                 done = True
             
             if done:
                 break
-        print("Epsiode: {}. Reward: {}".format(epsiode, sum_reward))
+        print("Epsiode: {}. Reward: {}. Steps: {}".format(epsiode, sum_reward, steps))
     
     env.close()
