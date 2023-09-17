@@ -193,8 +193,7 @@ class V2I(gym.Env):
             # Reward function
             # Reward for moving forward
             # Penalize for large acc and deceleration
-            # Penalize for time
-            reward = dist_travelled_tstep - (action)**2 - 1
+            reward = dist_travelled_tstep - (action)**2
             obs, nearby_vehicles = self._get_obs(tc)
             info = {"num_vehicles_nearby": nearby_vehicles}
             
