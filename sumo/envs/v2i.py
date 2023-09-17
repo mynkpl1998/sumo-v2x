@@ -138,6 +138,7 @@ class V2I(gym.Env):
 
     def step(self, action: float):
 
+        action = float(action)
         assert type(float(action)) == float, "Expected action to be: float, Got: %s"%(type(action))
         
         self._current_t_steps += 1
