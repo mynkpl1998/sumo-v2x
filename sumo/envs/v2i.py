@@ -164,10 +164,6 @@ class V2I(gym.Env):
         # Perform a step in simulation
         tc.simulationStep()
 
-        curr_dist = tc.vehicle.getDistance("ego")
-        dist_travelled_tstep = curr_dist - self._dist_travelled
-        self._dist_travelled = curr_dist
-
         # Check collided vehicles
         collided_vehicles = tc.simulation.getCollidingVehiclesIDList()
         if "ego" in collided_vehicles:
@@ -193,7 +189,7 @@ class V2I(gym.Env):
             # Reward function
             # Reward for moving forward
             # Penalize for large acc and deceleration
-            reward = dist_travelled_tstep - (action)**2
+            reward = tc.vehicle.getSpeed("ego")/tc.vehicle.getMaxSpeed("ego")
             obs, nearby_vehicles = self._get_obs(tc)
             info = {"num_vehicles_nearby": nearby_vehicles}
             
@@ -412,10 +408,6 @@ class V2I(gym.Env):
 
         # Reset step counter
         self._current_t_steps = 0
-
-        # Initialize the distance travelled
-        self._dist_travelled = tc.vehicle.getDistance("ego")
-        assert self._dist_travelled == 0
 
         # Returns the list of vehicles and count
         obs, num_nearby_veh = self._get_obs(tc)
