@@ -169,7 +169,7 @@ class V2I(gym.Env):
         if "ego" in collided_vehicles:
             done = True
             self._logger.warn("Ego vehicle has collided")
-            reward = -20
+            reward = -100
             terminal_state = np.array([-1, -1, -1] * self._max_nearby_vehicles).flatten()
             return terminal_state, reward, done, False, {}
         else:
